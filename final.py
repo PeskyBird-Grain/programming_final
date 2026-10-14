@@ -4,8 +4,9 @@ user_name = input("What is your name? ")
 scramble = []
 with open("stats.txt", "r") as file:
     content = file.read()
-    wins = int(content[0])
-    losses = int(content[2])
+    con = content.split(",")
+    wins = int(con[0])
+    losses = int(con[1])
 with open("gabe.txt", "r") as file:
     scrambles = file.read()
     scramble = scrambles.split(",")
@@ -39,7 +40,7 @@ while True:
             basment = input("Do you:\n1) Investigate Room 1\n2) Investigate Room 2\n3) Go upstairs\n")
             if basment == "1":
                 while True:
-                    # GABE W
+                    # GABE W, This is the first section of the game. If you explore you find a word scramble that gives you the first number for the lock combination when solved.
                     check_basement_one = input("Do you:\n1) Investigate the computer\n2) look behind the corner\n3) leave\n")
                     
                     if check_basement_one == "1":
@@ -49,6 +50,37 @@ while True:
                         while True:
                             word_guesst = False
                             try:
+                                def word(word, real_word):
+                                    real_word = {
+                                        "PPALE": "Apple",
+                                        "NABANA": "Banana",
+                                        "HCAIR": "Chair",
+                                        "OOSLCH": "School",
+                                        "RTEAW": "Water",
+                                        "REHTACE": "Teacher",
+                                        "KOBO": "Book",
+                                        "LPEINC": "Pencil",
+                                        "WODNWI": "Window",
+                                        "RFELOW": "Flower",
+                                        "RVIRE": "River",
+                                        "TAMOUNIN": "Mountain",
+                                        "RAOGNE": "Orange",
+                                        "LPEZUZ": "Puzzle",
+                                        "RDEGON": "Dragon",
+                                        "XEPRENIECE": "Experience",
+                                        "EJLYL": "Jelly",
+                                        "RTHAE": "Earth",
+                                        "DCLUOS": "Clouds",
+                                        "NIAR": "Rain",
+                                        "HETAR": "Heart",
+                                        "LAPENT": "Planet",
+                                        "NCOEAS": "Oceans"
+                                        
+                                    }
+                                    if word_guess == real_word:
+                                        return print(f"That is correct the number you need is {num_one}")
+                                    else:
+                                        print("That is not the word")
                                 word_guess = input("What is the word?\n").capitalize().strip()
                                 if word == "PPALE":
                                     if word_guess == "Apple":
@@ -183,6 +215,7 @@ while True:
                     if check_basement_one == "3":
                         break
             if basment == "2":
+                # BLISS O
                 while True:
                     check_basement_two = input("Do you:\n1) Investigate the laptop\n2) Leave\n")
                     if check_basement_two == "1":
@@ -213,6 +246,7 @@ while True:
                                     score += 1
                                 else:
                                     print(f"Wrong!!")
+                                    score = 0
 
 
 
@@ -224,6 +258,7 @@ while True:
                                     score += 1
                                 else:
                                     print(f"Incorrect")
+                                    score = 0
 
 
                                 number1 = generate_number()
@@ -234,6 +269,7 @@ while True:
                                     score += 1
                                 else:
                                     print(f"wrong!")
+                                    score = 0
 
                                 while True:
                                     number1 = random.randint(0,15)
@@ -248,9 +284,8 @@ while True:
                                     score += 1
                                 else:
                                     print(f"Incorrect..")
-                            
+                                    score = 0
                                     
-
                                 print(f"Your final score is: {score}/4")
 
                                 if score == 4:
@@ -271,6 +306,7 @@ while True:
             upstairs = input("Do you:\n1) Investigate Room 3\n2) Investigate Room 4\n3) Check the door\n4) Go downstairs\n")
             if upstairs == "1":
                 # ALEX F
+                # This code is for the 3rd part of the combination. It gives the user four options. One for the vending machine, which provides a shifted word and the shift amount, the second for a Bill Cipher easter-egg, the third to go to the caesar cipher, and the fourth to leave the room. The caesar cipher takes an input from the user, a shift amount, and gives the shifed message, which is the number needed.
                 print("You enter a mysterious room. In the corner is a vending machine. On the wall, there is a triangular tapestry with an eye in the center. Finally, you see what looks like a cash register on the desk.")
                 while True:
                     while True:
@@ -320,6 +356,9 @@ while True:
                         break
             if upstairs == "2":
                 # REMY C
+                # my code first adds diolouge
+                # then my code opens and readsthe remy.txt file which contains the word search
+                # then
                 print("You walk into the room. On a desk is a peice of paper")
                 print('its a word search!?')
                 print()
@@ -367,6 +406,7 @@ while True:
                         print('you have 0 guesses left')
                         print()
                         print('YOU LOST')
+                        break
                     else:
                             print('good job the number was 7')
                             break
@@ -393,6 +433,8 @@ while True:
                             at_upstairs = "0"
                             basment = "0"
                             upstairs = "0"
+                        else:
+                            break
                     else:
                         print("You don't have a key to use.")
             if upstairs == "4":
